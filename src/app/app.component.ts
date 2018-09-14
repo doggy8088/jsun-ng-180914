@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Article } from './article';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +12,14 @@ export class AppComponent {
   sitename = 'conduit';
   subtitle = 'A place to share your knowledge.';
   data: Article[];
-  constructor(private http: HttpClient) { }
+  constructor(private datasvc: DataService) { }
   ngOnInit(): void {
-    this.http.get<Article[]>('http://localhost:3000/articles').subscribe(v => {
+    this.datasvc.getArticle().subscribe(v => {
       this.data = v;
-    });
+    })
   }
   searchArticle(keyword: string) {
-    this.http.get<Article[]>('http://localhost:3000/articles?q=' + keyword).subscribe(v => {
+    this.datasvc.getArticle(keyword).subscribe(v => {
       this.data = v;
     });
   }

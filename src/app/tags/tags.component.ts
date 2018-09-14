@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-tags',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TagsComponent implements OnInit {
 
-  constructor() { }
+  tags: string[];
+
+  constructor(private datasvc: DataService) { }
 
   ngOnInit() {
+    this.datasvc.getTags().subscribe(v => {
+      this.tags = v;
+    })
   }
 
 }
