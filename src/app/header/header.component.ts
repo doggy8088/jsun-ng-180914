@@ -12,4 +12,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  doSearch(value) {
+    console.log(value);
+  }
+
 }
