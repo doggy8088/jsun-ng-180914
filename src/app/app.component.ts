@@ -17,4 +17,9 @@ export class AppComponent {
       this.data = v;
     });
   }
+  searchArticle(keyword: string) {
+    this.http.get<Article[]>('http://localhost:3000/articles?q=' + keyword).subscribe(v => {
+      this.data = v;
+    });
+  }
 }
