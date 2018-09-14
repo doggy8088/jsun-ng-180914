@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light">
   <div class="container">
     <a class="navbar-brand" href="index.html">conduit</a>
-    <input [(ngModel)]="keyword" class="form-control form-control-sm search-input" type="text" placeholder="Keyword" #tKeyword>
+    <input [(ngModel)]="keyword" class="form-control form-control-sm search-input" type="text" placeholder="Keyword" #tKeyword  [class.error]="keyword.length > 5">
     <button class="btn btn-sm btn-primary" (click)="doSearch(tKeyword.value)">
       <i class="ion-search"></i>
     </button>
